@@ -290,7 +290,7 @@ const DesignJournal = () => {
 
         .featured-image img {
           width: 100%;
-          height: auto;
+          max-height: 40%;
           object-fit: cover;
         }
 
