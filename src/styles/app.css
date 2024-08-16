@@ -1,3 +1,10 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #001417;
+  color: #fff;
+}
 .design-journal {
   font-family: sans-serif;
   display: flex;
@@ -19,10 +26,11 @@
 }
 
 .logo-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: black;
+  width: 8rem;
+  height: 3.3rem;
+  background-color: #00e0d0;
   margin-right: 0.5rem;
+  overflow: hidden;
 }
 
 .logo-text {
@@ -36,14 +44,14 @@
 .nav-link {
   margin-left: 1rem;
   text-decoration: none;
-  color: black;
+  color: #fff;
 }
 
 .get-started-btn {
   display: none;
   padding: 0.5rem 1rem;
-  background-color: black;
-  color: white;
+  background-color: #00e0d0;
+  color: black;
   border: none;
   border-radius: 4px;
 }
@@ -51,6 +59,7 @@
 .menu-btn {
   background: none;
   border: none;
+  color: #00e0d0;
   font-size: 1.5rem;
 }
 
@@ -61,7 +70,7 @@
 
 .sidebar {
   display: none;
-  width: 35%;
+  width: 20%;
   padding: 2rem;
   border-right: 1px solid #e5e5e5;
 }
@@ -101,6 +110,7 @@
   border-radius: 9999px;
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  color: #001417;
 }
 
 .main-title {
@@ -110,20 +120,24 @@
 }
 
 .subtitle {
-  color: #6b7280;
+  color: #fff;
   margin-bottom: 2rem;
 }
 
 .featured-article {
   display: flex;
+  height: 40%;
   flex-direction: column;
   margin-bottom: 2rem;
 }
 
 .featured-image img {
   width: 100%;
-  max-height: 40%;
-  object-fit: cover;
+}
+.featured-content{
+
+  margin: auto;
+
 }
 
 .featured-title {
@@ -133,7 +147,7 @@
 }
 
 .featured-text {
-  color: #6b7280;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
@@ -156,7 +170,7 @@
 
 .publish-date {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #fff;
 }
 
 .articles-grid {
@@ -179,7 +193,7 @@
 
 .article-excerpt {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
