@@ -23,6 +23,8 @@ body {
 .logo {
   display: flex;
   align-items: center;
+    display: none;
+
 }
 
 .logo-icon {
@@ -37,9 +39,6 @@ body {
   font-weight: 600;
 }
 
-.nav {
-  display: none;
-}
 
 .nav-link {
   margin-left: 1rem;
@@ -48,7 +47,6 @@ body {
 }
 
 .get-started-btn {
-  display: none;
   padding: 0.5rem 1rem;
   background-color: #00e0d0;
   color: black;
@@ -234,8 +232,16 @@ body {
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
 }
+@media (max-width: 480px) {
+  .get-started-btn{
+    display: none;
+  }
+}
 
 @media (min-width: 768px) {
+  .logo{
+    display: block;
+  }
   .nav {
     display: flex;
   }
@@ -244,9 +250,7 @@ body {
     display: block;
   }
 
-  .menu-btn {
-    display: none;
-  }
+
 
   .sidebar {
     display: block;
@@ -283,3 +287,4 @@ body {
     font-size: 2.5rem;
   }
 }
+

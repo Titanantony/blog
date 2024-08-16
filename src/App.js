@@ -2,84 +2,85 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from './Firebase';
 import './styles/app.css';
-import logo from './assets/lago.png';
+import logo from './assets/logo.png';
+
+
 const DesignJournal = () => {
   const [featuredArticle, setFeaturedArticle] = useState(null);
   const [articles, setArticles] = useState([]);
-  const [isNavVisible, setNavVisible] = useState(false);  // Add state for nav visibility
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const articlesCollection = collection(db, 'article');
-        const articlesSnapshot = await getDocs(articlesCollection);
-        
-        console.log("Snapshot: ", articlesSnapshot);
+   const fetchArticles = async () => {
+  try {
+    const articlesCollection = collection(db, 'article');
+    const articlesSnapshot = await getDocs(articlesCollection);
+    
+    // Log the snapshot to see what's returned
+    console.log("Snapshot: ", articlesSnapshot);
 
-        if (!articlesSnapshot.empty) {
-          const articlesList = articlesSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }));
-          console.log("Articles List: ", articlesList);
-          setFeaturedArticle(articlesList[0]);
-          setArticles(articlesList.slice(1));
-        } else {
-          console.log("No documents found");
-        }
-      } catch (error) {
-        console.error("Error fetching articles:", error);
-      }
-    };
+    if (!articlesSnapshot.empty) {
+      const articlesList = articlesSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      console.log("Articles List: ", articlesList);
+      setFeaturedArticle(articlesList[0]);
+      setArticles(articlesList.slice(1));
+    } else {
+      console.log("No documents found");
+    }
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+  }
+};
+
 
     fetchArticles();
   }, []);
 
+  
   const testFetchById = async () => {
-    try {
-      const docRef = doc(db, 'article', '5h2vfbMfUTilrgkvoiPn');
-      const docSnap = await getDoc(docRef);
+  try {
+    const docRef = doc(db, 'article', '5h2vfbMfUTilrgkvoiPn');
+    const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error fetching document:", error);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      console.log("No such document!");
     }
-  };
+  } catch (error) {
+    console.error("Error fetching document:", error);
+  }
+};
 
-  testFetchById();
+testFetchById();
 
-  // Function to toggle the visibility of the navigation
-  const toggleNav = () => {
-    setNavVisible(!isNavVisible);
-  };
 
 
   return (
     <div className="design-journal">
       {/* Header */}
       <header className="header">
-      <div className="logo">
-        <div className="logo-icon">
-          <img src={logo} alt="titan logo" />
+        <div className="logo">
+          <div className="logo-icon">
+            <img src={logo} alt="titan logo"/>
+          </div>
+          
         </div>
-      </div>
+        <nav className="nav">
+          <a href="#" className="nav-link">Latest</a>
+          <a href="#" className="nav-link">React</a>
+          <a href="#" className="nav-link">AI</a>
+          <a href="#" className="nav-link">Flutter</a>
+          <a href="#" className="nav-link">My 30 Day Plan</a>
+        </nav>
+        <button className="get-started-btn" onClick={() => window.location.href = 'https://antonykinuthia.xyz'}>
+    My Website
+</button>
 
-      {/* Conditionally render the nav based on screen size and state */}
-      <nav className={`nav ${isNavVisible ? 'visible' : 'hidden'}`}>
-        <a href="#" className="nav-link">Latest</a>
-        <a href="#" className="nav-link">React</a>
-        <a href="#" className="nav-link">AI</a>
-        <a href="#" className="nav-link">Flutter</a>
-        <a href="#" className="nav-link">My 30 Day Plan</a>
-      </nav>
-
-      <button className="get-started-btn">My Website</button>
-      <button className="menu-btn" onClick={toggleNav}>☰</button>
-    </header>
+        {/* <button className="menu-btn">☰</button> */}
+      </header>
 
       {/* Main content */}
       <main className="main-content">
