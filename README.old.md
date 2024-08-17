@@ -1,2 +1,0 @@
-# My Bog
-blog website

@@ -3,6 +3,7 @@ import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from './Firebase';
 import './styles/app.css';
 import logo from './assets/logo.png';
+import SocialLinks from './SocialLinks';
 
 
 const DesignJournal = () => {
@@ -147,65 +148,40 @@ testFetchById();
       </main>
 
       {/* Footer */}
-     <footer className="footer">
-        <div className="footer-grid">
-          <div className="footer-column">
-            <h3 className="footer-title">Product</h3>
-            <ul className="footer-list">
-              <li>Overview</li>
-              <li>Features</li>
-              <li>Solutions</li>
-              <li>Tutorials</li>
-              <li>Pricing</li>
-              <li>Releases</li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3 className="footer-title">Company</h3>
-            <ul className="footer-list">
-              <li>About us</li>
-              <li>Careers</li>
-              <li>Press</li>
-              <li>News</li>
-              <li>Media kit</li>
-              <li>Contact</li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3 className="footer-title">Resources</h3>
-            <ul className="footer-list">
-              <li>Blog</li>
-              <li>Newsletter</li>
-              <li>Events</li>
-              <li>Help centre</li>
-              <li>Tutorials</li>
-              <li>Support</li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3 className="footer-title">Social</h3>
-            <ul className="footer-list">
-              <li>Twitter</li>
-              <li>LinkedIn</li>
-              <li>Facebook</li>
-              <li>GitHub</li>
-              <li>AngelList</li>
-              <li>Dribbble</li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3 className="footer-title">Legal</h3>
-            <ul className="footer-list">
-              <li>Terms</li>
-              <li>Privacy</li>
-              <li>Cookies</li>
-              <li>Licenses</li>
-              <li>Settings</li>
-              <li>Contact</li>
-            </ul>
+     <footer className='footer'>
+      <div className='footer-container'>
+        <div className='footer-left'>
+          <h2>Let’s Connect Here</h2>
+
+          <SocialLinks />
+          <p>
+            Feel free to connect with me on the above social media platforms.
+            I'm here to engage, collaborate, and share exciting ideas!
+          </p>
+          <p className='logo'>Antony</p>
+        </div>
+        <div className='footer-right'>
+          <div className='footer-contact'>
+            <h4>Contact</h4>
+            <p>
+              Phone: <a href='tel:+254115423788'>+254 115 423 788</a>
+            </p>
+            <p>
+              <a href='mailto:antonytitan96@.com'>antonytitan96@gmail.com</a>
+            </p>
+            <p>
+              <a
+                href='https:/antonykinuthia.xyz'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                https:/antonykinuthia.xyz
+              </a>
+            </p>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
     </div>
   );
 };
