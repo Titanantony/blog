@@ -87,26 +87,21 @@ testFetchById();
         {/* Sidebar */}
         <aside className="sidebar">
           <h2 className="sidebar-title">
-            <div className="sidebar-icon"></div>
-            View all
+            Popular&nbsp;content
           </h2>
           <ul className="sidebar-list">
-            <li>Design</li>
-            <li>Product</li>
-            <li>Software Engineering</li>
-            <li>Customer Success</li>
-            <li>Leadership</li>
-            <li>Management</li>
+            <li>➡️ Design</li>
+            <li>➡️ Product</li>
+            <li>➡️ Software Engineering</li>
+            <li>➡️ Customer Success</li>
+            <li>➡️ Leadership</li>
+            <li>➡️ Management</li>
           </ul>
         </aside>
 
         {/* Content */}
         <div className="content">
-          <div className="tag">Design Journal</div>
-          <h1 className="main-title">Inside Design: Stories and interviews</h1>
-          <p className="subtitle">
-            Subscribe for the latest design trends, design software and releases, and exclusive interviews with design leaders.
-          </p>
+          <div className="tag">Recently Published</div>
 
           {/* Featured article */}
           {featuredArticle && (
@@ -114,7 +109,7 @@ testFetchById();
               <div className="featured-image">
                 <img src={featuredArticle.imageUrl} alt="Featured article" />
               </div>
-              <div className="featured-content">
+               <div className="featured-content">
                 <h2 className="featured-title">{featuredArticle.title}</h2>
                 <p className="featured-text">{featuredArticle.excerpt}</p>
                 <div className="author-info">
@@ -122,6 +117,7 @@ testFetchById();
                   <span className="author-name">{featuredArticle.subTitle}</span>
                   {/* <span className="publish-date">{featuredArticle.publishDate}</span> */}
                 </div>
+              
               </div>
             </div>
           )}
