@@ -32,7 +32,6 @@ body {
   height: 3.3rem;
   background-color: #00e0d0;
   margin-right: 0.5rem;
-  overflow: hidden;
 }
 
 .logo-text {
@@ -81,13 +80,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.sidebar-icon {
-  width: 1rem;
-  height: 1rem;
-  background-color: black;
-  
-}
-
 .sidebar-list {
   list-style-type: none;
   padding: 0;
@@ -130,7 +122,6 @@ body {
   margin-bottom: 40px;
 }
 .featured-image{
-  margin: auto;  
    width: 100%;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -336,9 +327,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .footer-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 
 @media (min-width: 1024px) {
