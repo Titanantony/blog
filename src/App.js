@@ -8,36 +8,50 @@ import SocialLinks from './SocialLinks';
 
 const DesignJournal = () => {
   const [featuredArticle, setFeaturedArticle] = useState(null);
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([]);  
 
   useEffect(() => {
-   const fetchArticles = async () => {
-  try {
-    const articlesCollection = collection(db, 'article');
-    const articlesSnapshot = await getDocs(articlesCollection);
-    
-    // Log the snapshot to see what's returned
-    console.log("Snapshot: ", articlesSnapshot);
+    const fetchArticles = async () => {
+      try {
+        const articlesCollection = collection(db, 'article');
+        const articlesSnapshot = await getDocs(articlesCollection);
+        
+        if (!articlesSnapshot.empty) {
+          const articlesList = articlesSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            publishDate: formatDate(doc.data().publishDate)
+          }));
 
-    if (!articlesSnapshot.empty) {
-      const articlesList = articlesSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      console.log("Articles List: ", articlesList);
-      setFeaturedArticle(articlesList[0]);
-      setArticles(articlesList.slice(1));
-    } else {
-      console.log("No documents found");
-    }
-  } catch (error) {
-    console.error("Error fetching articles:", error);
-  }
-};
-
+          const reversedArticles = articlesList.reverse();
+          
+          // Set the most recent article as featured
+          setFeaturedArticle(reversedArticles[0]);
+          
+          // Set the rest of the articles, excluding the featured one
+          setArticles(reversedArticles.slice(1));
+          
+          console.log("No documents found");
+        }
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
+    };
 
     fetchArticles();
   }, []);
+
+   const formatDate = (timestamp) => {
+    if (timestamp && timestamp.toDate instanceof Function) {
+      const date = timestamp.toDate();
+      return date.toLocaleDateString('en-US', { 
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric' 
+      });
+    }
+    return 'Date unavailable';
+  };
 
   
   const testFetchById = async () => {
@@ -46,7 +60,7 @@ const DesignJournal = () => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      console.log("Found data");
     } else {
       console.log("No such document!");
     }
@@ -131,10 +145,11 @@ testFetchById();
                 <h3 className="article-title">{article.title}</h3>
                 <p className="article-excerpt">{article.excerpt}</p>
                 <div className="author-info">
-                  <img src={article.authorImageUrl} alt="Author" className="author-image" />
-                  <span className="author-name">{article.authorName}</span>
-                  {/* <span className="publish-date">{article.publishDate}</span> */}
-                </div>
+                  <img src={article.subImageUrl} alt="Author" className="author-image" />
+                  <div><span className="author-name" style={{ display: "block" }}>{article.subTitle}<br /></span> 
+                  
+                  <span className="publish-date" style={{ display: "block" }}>{article.publishDate}</span>
+                </div></div>
               </div>
             ))}
           </div>
