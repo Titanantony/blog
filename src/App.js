@@ -155,10 +155,10 @@ testFetchById();
           </div>
 
           {/* Pagination */}
-          <div className="pagination">
+          {/* <div className="pagination">
             <button className="pagination-btn">← Previous</button>
             <button className="pagination-btn">Next →</button>
-          </div>
+          </div> */}
         </div>
       </main>
 
